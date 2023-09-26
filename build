@@ -11,10 +11,10 @@ elif [ "$1" == "all" ]; then
     WHAT_TO_MAKE=
 elif [ "$1" == "app" ]; then
     WHAT_TO_MAKE=a.out.app
-elif [ "$1" == "gtest" ]; then
-    WHAT_TO_MAKE=a.out.gtest
+elif [ "$1" == "tests" ]; then
+    WHAT_TO_MAKE=a.out.tests
 else
-    echo "Must build either 'app',  'gtest', or 'all'"
+    echo "Must build either 'app',  'tests', or 'all'"
     echo
     exit 1
 fi

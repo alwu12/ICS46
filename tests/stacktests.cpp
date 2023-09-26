@@ -1,4 +1,4 @@
-#include "gtest/gtest.h"
+#include "catch_amalgamated.hpp"
 #include "postfixCalc.hpp"
 #include "LLStack.hpp"
 #include <unordered_map>
@@ -20,36 +20,36 @@ namespace{
     //      with non-numeric data types.  A char is a numeric type.
     // 
 
-TEST(Required, RequiredStackTest1)
+TEST_CASE("RequiredStackTest1", "[Required]")
 {
     LLStack<int> a;
     a.push(5);
-    EXPECT_EQ( a.top(), 5 );
+    REQUIRE( a.top() == 5 );
 }
 
-TEST(Required, RequiredStackTest2)
+TEST_CASE("RequiredStackTest2", "[Required]")
 {
     LLStack<int> a;
     a.push(5);
     a.push(3);
-    EXPECT_EQ( a.top(), 3 );
+    REQUIRE( a.top() == 3 );
 }
 
 
-TEST(Required, RequiredStackTest3)
+TEST_CASE("RequiredStackTest3", "[Required]")
 {
     LLStack<int> a;
     a.push(5);
     a.push(3);
     a.pop();
-    EXPECT_EQ( a.top(), 5 );
+    REQUIRE( a.top() == 5 );
 }
 
 
-TEST(Required, RequiredStackTest4)
+TEST_CASE("RequiredStackTest4", "[Required]")
 {
     LLStack<int> a;
-    EXPECT_THROW( a.top(), StackEmptyException );
+    REQUIRE_THROWS_AS( a.top(), StackEmptyException );
 }
 
 
@@ -57,45 +57,45 @@ TEST(Required, RequiredStackTest4)
 
 
 
-// YOU SHOULD ADD ADDITIONAL TEST CASES HERE!! 
+// YOU SHOULD ADD ADDITIONAL TEST_CASE "ERE" H"[CASES]"!! 
 
 
 
-TEST(Required, RequiredCalcTest1)
+TEST_CASE("RequiredCalcTest1", "[Required]")
 {
     const std::vector<std::string> EXPRESSION = {
         "5", "3", "*"
     };
-    EXPECT_EQ( postfixCalculator(EXPRESSION), 15);
+    REQUIRE( postfixCalculator(EXPRESSION) == 15);
 }
 
-TEST(Required, RequiredCalcTest2)
+TEST_CASE("RequiredCalcTest2", "[Required]")
 {
     const std::vector<std::string> EXPRESSION = {
         "5", "3", "2", "-", "*"
     };
-    EXPECT_EQ( postfixCalculator(EXPRESSION), 5);
+    REQUIRE( postfixCalculator(EXPRESSION) == 5);
     
 }
 
-TEST(Required, RequiredCalcTest3)
+TEST_CASE("RequiredCalcTest3", "[Required]")
 {
     const std::vector<std::string> EXPRESSION = {
         "5", "3", "2", "-"
     };
-    EXPECT_ANY_THROW( postfixCalculator(EXPRESSION) );
+    REQUIRE_THROWS( postfixCalculator(EXPRESSION) );
     
 }
 
 // You can fail this test and still get partial credit from others that pass. 
 // Of course, I would recommend you get this one to pass, too...
 // Note that the group name is "CalcTest" and not "Required."
-TEST(CalcTest, AdditionalTest4)
+TEST_CASE("AdditionalTest4", "[CalcTest]")
 {
     const std::vector<std::string> EXPRESSION = {
         "5", "3", "*", "20", "*"
     };
-    EXPECT_EQ( postfixCalculator(EXPRESSION), 300);
+    REQUIRE( postfixCalculator(EXPRESSION) == 300);
     
 }
 
