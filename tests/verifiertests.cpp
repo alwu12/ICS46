@@ -1,4 +1,4 @@
-#include "gtest/gtest.h"
+#include "catch_amalgamated.hpp"
 #include "verifySol.hpp"
 #include <unordered_map>
 #include <string>
@@ -11,7 +11,7 @@
 
 namespace{
 
-TEST(Required, RequiredFirst){
+TEST_CASE("RequiredFirst", "[Required]"){
     std::string s1 = "POT";
     std::string s2 = "PAN";
     std::string s3 = "BIB";
@@ -20,10 +20,10 @@ TEST(Required, RequiredFirst){
         {'I', 0}, {'N', 4}, {'O', 3}, {'P', 2}, {'T', 1}
     };
 
-    EXPECT_TRUE( verifySolution( s1, s2, s3, solution ) );
+    REQUIRE( verifySolution( s1, s2, s3, solution ) );
 }
 
-TEST(Required, RequiredSecond){
+TEST_CASE("RequiredSecond", "[Required]"){
 
     std::string s1 = "CAT";
     std::string s2 = "DOG";
@@ -31,11 +31,11 @@ TEST(Required, RequiredSecond){
 
     std::unordered_map<char, unsigned> solution = { {'A', 5}, {'C', 2}, {'D', 1}, {'G', 6}, {'I', 9}, {'O', 4}, {'P', 3}, {'T', 0} };
 
-    EXPECT_TRUE( verifySolution( s1, s2, s3, solution ) );
+    REQUIRE( verifySolution( s1, s2, s3, solution ) );
 } // end test two
 
 
-TEST(Required, RequiredThird){
+TEST_CASE("RequiredThird", "[Required]"){
 
     std::string s1 = "LARRY";
     std::string s2 = "CAREER";
@@ -43,12 +43,12 @@ TEST(Required, RequiredThird){
 
     std::unordered_map<char, unsigned> solution = { {'L', 5}, {'A', 2}, {'R', 1}, {'Y', 6}, {'C', 9}, {'E', 4}, {'G', 3}, {'N', 0}, {'D', 7} };
 
-    EXPECT_FALSE( verifySolution( s1, s2, s3, solution ) );
+    REQUIRE_FALSE( verifySolution( s1, s2, s3, solution ) );
 } 
 
 
 
-// YOU SHOULD ADD ADDITIONAL TEST CASES HERE!! 
+// YOU SHOULD ADD ADDITIONAL TEST_CASE "ERE" H"[CASES]"!! 
 
 
 
