@@ -24,7 +24,7 @@ list(REMOVE_ITEM APP_SRC_FILES_EXCEPT_MAIN ${CMAKE_SOURCE_DIR}/app/main.cpp)
 add_executable(${PROJECT_NAME} ${APP_SRC_FILES})
 set_target_properties(${PROJECT_NAME} PROPERTIES COMPILE_FLAGS ${COMPILE_FLAGS})
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/app)
-target_link_libraries(${PROJECT_NAME} pthread c++)
+target_link_libraries(${PROJECT_NAME} pthread)
 
 project(a.out.tests)
 
