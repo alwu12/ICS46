@@ -55,7 +55,7 @@ TEST_CASE("WorksWithNumberStrings", "[Not Required]"){
 
     std::unordered_map<char, unsigned> solution = { {'1', 1}, {'2', 2}, {'3', 3}, {'4', 4}, {'5', 5}, {'6', 6}, {'7', 7}, {'9', 9} };
 
-    REQUIRE_FALSE( verifySolution( s1, s2, s3, solution ) );
+    REQUIRE( verifySolution( s1, s2, s3, solution ) );
 } 
 
 // YOU SHOULD ADD ADDITIONAL TEST_CASE "ERE" H"[CASES]"!! 
