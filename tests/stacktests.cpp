@@ -56,7 +56,7 @@ TEST_CASE("RequiredStackTest4", "[Required]")
 
 
 
-
+/*
 // YOU SHOULD ADD ADDITIONAL TEST_CASE "ERE" H"[CASES]"!! 
 
 
@@ -98,10 +98,60 @@ TEST_CASE("AdditionalTest4", "[CalcTest]")
     REQUIRE( postfixCalculator(EXPRESSION) == 300);
     
 }
+*/
+
+//check that copy constructor is a deep copy and not shallow
+TEST_CASE("ProperDeepCopyConstructor_LLStack", "[LLStack]")
+{
+    LLStack<int> x;
+    x.push(5);
+    LLStack<int> y(x);
+    x.push(10);
+    REQUIRE( x.top() == 10 );
+    REQUIRE( y.top() == 5 );
+}
+
+//check that copy constructor is a deep copy and not shallow
+TEST_CASE("ProperDeepCopyOperator_LLStack", "[LLStack]")
+{
+    LLStack<int> x;
+    x.push(5);
+    LLStack<int> y = x;
+    x.push(10);
+    REQUIRE( x.top() == 10 );
+    REQUIRE( y.top() == 5 );
+}
+
+TEST_CASE("TopWorksForConstAndMutable", "[LLStack]")
+{
+    LLStack<int> x;
+    x.push(5);
+    const LLStack<int> y = x;
+    x.push(10);
+    REQUIRE( x.top() == 10 );
+    REQUIRE( y.top() == 5 );
+}
 
 
+TEST_CASE("PopIsDeletingProperly", "[LLStack]")
+{
+    LLStack<int> x;
+    x.push(5);
+    x.push(10);
+    x.pop();
+    REQUIRE( x.top() == 5 );
+    REQUIRE( x.size() == 1 );
 
+}
 
+TEST_CASE("SizeDoesNotMakeYouLoseHead", "[LLStack]")
+{
+    //check to see that when iterating in size, i am not leaking memory
+    LLStack<int> x;
+    x.push(5);
+    REQUIRE( x.size() == 1 );
+    REQUIRE( x.size() == 1 );
+}
 
 
 
