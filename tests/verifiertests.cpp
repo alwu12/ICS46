@@ -58,6 +58,18 @@ TEST_CASE("WorksWithNumberStrings", "[Not Required]"){
     REQUIRE( verifySolution( s1, s2, s3, solution ) );
 } 
 
+TEST_CASE("WorksWithUINT_MAX", "[Not Required]"){
+
+    std::string s1 = "1";
+    std::string s2 = "2";
+    std::string s3 = "3";
+    unsigned value = 0;
+    value--;
+
+    std::unordered_map<char, unsigned> solution = { {'1', value}, {'2', 2}, {'3', 1} };
+
+    REQUIRE( verifySolution( s1, s2, s3, solution ) );
+} 
 // YOU SHOULD ADD ADDITIONAL TEST_CASE "ERE" H"[CASES]"!! 
 
 

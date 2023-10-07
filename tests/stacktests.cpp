@@ -122,6 +122,14 @@ TEST_CASE("ProperDeepCopyOperator_LLStack", "[LLStack]")
     REQUIRE( y.top() == 5 );
 }
 
+TEST_CASE("CopyOperatorCanCopyItself_LLStack", "[LLStack]")
+{
+    LLStack<int> x;
+    x.push(5);
+    x = x;
+    REQUIRE( x.top() == 5 );
+}
+
 TEST_CASE("TopWorksForConstAndMutable", "[LLStack]")
 {
     LLStack<int> x;
