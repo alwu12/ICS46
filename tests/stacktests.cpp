@@ -56,7 +56,7 @@ TEST_CASE("RequiredStackTest4", "[Required]")
 
 
 
-/*
+
 // YOU SHOULD ADD ADDITIONAL TEST_CASE "ERE" H"[CASES]"!! 
 
 
@@ -87,6 +87,28 @@ TEST_CASE("RequiredCalcTest3", "[Required]")
     
 }
 
+TEST_CASE("CanHandleNoNumbers", "Custom")
+{
+    const std::vector<std::string> EXPRESSION = {
+        "-", "/", "+", "*"
+    };
+    REQUIRE_THROWS( postfixCalculator(EXPRESSION) );
+}
+
+TEST_CASE("CanHandleEmpty", "Custom")
+{
+    const std::vector<std::string> EXPRESSION = {};
+    REQUIRE_THROWS( postfixCalculator(EXPRESSION) );
+}
+
+TEST_CASE("CanHandleTooManyNumbers", "Custom")
+{
+    const std::vector<std::string> EXPRESSION = {
+        "1", "2", "3", "*"
+    };
+    REQUIRE_THROWS( postfixCalculator(EXPRESSION) );
+}
+
 // You can fail this test and still get partial credit from others that pass. 
 // Of course, I would recommend you get this one to pass, too...
 // Note that the group name is "CalcTest" and not "Required."
@@ -98,7 +120,7 @@ TEST_CASE("AdditionalTest4", "[CalcTest]")
     REQUIRE( postfixCalculator(EXPRESSION) == 300);
     
 }
-*/
+
 
 //check that copy constructor is a deep copy and not shallow
 TEST_CASE("ProperDeepCopyConstructor_LLStack", "[LLStack]")
@@ -111,7 +133,7 @@ TEST_CASE("ProperDeepCopyConstructor_LLStack", "[LLStack]")
     REQUIRE( y.top() == 5 );
 }
 
-//check that copy constructor is a deep copy and not shallow
+//check that copy operator is a deep copy and not shallow
 TEST_CASE("ProperDeepCopyOperator_LLStack", "[LLStack]")
 {
     LLStack<int> x;
@@ -122,6 +144,7 @@ TEST_CASE("ProperDeepCopyOperator_LLStack", "[LLStack]")
     REQUIRE( y.top() == 5 );
 }
 
+//check that copying itself doesnt result in any nonsense like deleting itself
 TEST_CASE("CopyOperatorCanCopyItself_LLStack", "[LLStack]")
 {
     LLStack<int> x;
@@ -130,6 +153,7 @@ TEST_CASE("CopyOperatorCanCopyItself_LLStack", "[LLStack]")
     REQUIRE( x.top() == 5 );
 }
 
+//check that both regular and const top work
 TEST_CASE("TopWorksForConstAndMutable", "[LLStack]")
 {
     LLStack<int> x;
@@ -140,7 +164,7 @@ TEST_CASE("TopWorksForConstAndMutable", "[LLStack]")
     REQUIRE( y.top() == 5 );
 }
 
-
+//check that pop is properly getting rid of list entries
 TEST_CASE("PopIsDeletingProperly", "[LLStack]")
 {
     LLStack<int> x;
@@ -152,9 +176,10 @@ TEST_CASE("PopIsDeletingProperly", "[LLStack]")
 
 }
 
+//check to see that when iterating in size, i am not leaking memory
 TEST_CASE("SizeDoesNotMakeYouLoseHead", "[LLStack]")
 {
-    //check to see that when iterating in size, i am not leaking memory
+    
     LLStack<int> x;
     x.push(5);
     REQUIRE( x.size() == 1 );

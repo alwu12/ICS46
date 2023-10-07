@@ -2,6 +2,7 @@
 #include "verifySol.hpp"
 #include <unordered_map>
 #include <string>
+#include <limits>
 
 // NOTE:  these are not intended as exhaustive tests.
 // This should get you started testing.
@@ -58,15 +59,14 @@ TEST_CASE("WorksWithNumberStrings", "[Not Required]"){
     REQUIRE( verifySolution( s1, s2, s3, solution ) );
 } 
 
-TEST_CASE("WorksWithUINT_MAX", "[Not Required]"){
+TEST_CASE("NoIntegerOverflow", "[Not Required]"){
 
     std::string s1 = "1";
     std::string s2 = "2";
     std::string s3 = "3";
-    unsigned value = 0;
-    value--;
+    
 
-    std::unordered_map<char, unsigned> solution = { {'1', value}, {'2', 2}, {'3', 1} };
+    std::unordered_map<char, unsigned> solution = { {'1', std::numeric_limits<unsigned int>::max()}, {'2', 1}, {'3', 0} };
 
     REQUIRE( verifySolution( s1, s2, s3, solution ) );
 } 
